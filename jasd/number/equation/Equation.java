@@ -1,6 +1,4 @@
-package main;
-
-import main.maths.*;
+package jasd.number.equation;
 
 public class Equation
 {
