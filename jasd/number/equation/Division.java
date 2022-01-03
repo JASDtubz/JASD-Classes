@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public class Division extends Operation
+final class Division extends Operation
 {
     public Division(double i, double j) { super(i, j); }
 
