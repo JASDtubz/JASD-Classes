@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public class Multiplication extends Operation
+final class Multiplication extends Operation
 {
     public Multiplication(double i, double j) { super(i, j); }
 
