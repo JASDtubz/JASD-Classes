@@ -2,16 +2,17 @@ package jasd.number.equation;
 
 public final class VariableKey
 {
-    private String s;
-    private double d;
-
+    String s;
+    double d;
+    
+    /**
+     * Creates a value for a variable with the name.
+     * @param s Name of the variable.
+     * @param d Value of the variable.
+     */
     public VariableKey(String s, double d)
     {
         this.s = s;
         this.d = d;
     }
-
-    public String getS() { return this.s; }
-
-    public double getD() { return this.d; }
 }
