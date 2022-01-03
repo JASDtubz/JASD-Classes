@@ -44,7 +44,7 @@ public class MoreTrig
 
 	public double arsinh(double x) { return this.l.ln(x + Math.sqrt(x * x + 1)); }
 
-	public double arcosh(double x) { return this.l.ln(x + Math.sqrt(x * x + 1)); }
+	public double arcosh(double x) { return this.l.ln(x + Math.sqrt(x * x - 1)); }
 
 	public double artanh(double x) { return 0.5 * this.l.ln((1 + x) / (1 - x)); }
 
