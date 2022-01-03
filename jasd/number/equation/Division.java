@@ -1,4 +1,4 @@
-package jasd.number.equation;
+package main.maths;
 
 public class Division extends Operation
 {
