@@ -1,4 +1,4 @@
-package main.maths;
+package jasd.number.equation;
 
 public class Multiplication extends Operation
 {
