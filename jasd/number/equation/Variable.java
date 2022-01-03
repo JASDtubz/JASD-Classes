@@ -15,9 +15,9 @@ final class Variable extends Operation
     @Override
     void setValue(VariableKey vk)
     {
-        if (this.s.equals(vk.getS()))
+        if (this.s.equals(vk.s))
         {
-            this.d = vk.getD();
+            this.d = vk.d;
             this.b = true;
         }
     }
