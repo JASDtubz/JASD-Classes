@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public class VariableKey
+public final class VariableKey
 {
     private String s;
     private double d;
