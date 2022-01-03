@@ -7,6 +7,8 @@ public abstract class Operation
     protected Operation o, p;
     protected final byte c;
 
+    protected Operation() { this.c = 4; }
+
     protected Operation(double i, double j)
     {
         this.a = i;
@@ -35,9 +37,24 @@ public abstract class Operation
         this.c = 3;
     }
 
-    public abstract double evaluate();
+    abstract double evaluate();
 
     public Operation getOperation() { return this; }
 
+    public void addVariableKey(VariableKey vk)
+    {
+        if (c == 1) { this.p.setValue(vk); }
+        else if (c == 2) { this.o.setValue(vk); }
+        else
+        {
+            this.o.setValue(vk);
+            this.p.setValue(vk);
+        }
+    }
+
     public abstract String toString();
+
+    abstract void setValue(VariableKey vk);
+
+    
 }
