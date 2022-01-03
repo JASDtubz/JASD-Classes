@@ -11,7 +11,7 @@ public class Division extends Operation
     public Division(Operation o, Operation p) { super(o, p); }
 
     @Override
-    public double evaluate()
+    double evaluate()
     {
         switch (super.c)
         {
@@ -33,4 +33,7 @@ public class Division extends Operation
             default: return String.format("(%s/%s)", super.o, super.p);
         }
     }
+
+    @Override
+    void setValue(VariableKey vk) { }
 }
