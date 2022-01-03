@@ -1,4 +1,4 @@
-package jasd.number.equation;
+package main.maths;
 
 public class Subtraction extends Operation
 {
@@ -11,7 +11,7 @@ public class Subtraction extends Operation
     public Subtraction(Operation o, Operation p) { super(o, p); }
 
     @Override
-    public double evaluate()
+    double evaluate()
     {
         switch (super.c)
         {
@@ -33,4 +33,7 @@ public class Subtraction extends Operation
             default: return String.format("(%s-%s)", super.o, super.p);
         }
     }
+
+    @Override
+    void setValue(VariableKey vk) { }
 }
