@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public class Exponentiation extends Operation
+final class Exponentiation extends Operation
 {
     public Exponentiation(double i, double j) { super(i, j); }
 
