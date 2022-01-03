@@ -1,4 +1,4 @@
-package jasd.number.equation;
+package main.maths;
 
 public class Multiplication extends Operation
 {
@@ -11,7 +11,7 @@ public class Multiplication extends Operation
     public Multiplication(Operation o, Operation p) { super(o, p); }
 
     @Override
-    public double evaluate()
+    double evaluate()
     {
         switch (super.c)
         {
@@ -33,4 +33,7 @@ public class Multiplication extends Operation
             default: return String.format("(%s*%s)", super.o, super.p);
         }
     }
+
+    @Override
+    void setValue(VariableKey vk) { }
 }
