@@ -16,9 +16,11 @@ public class Equation
 
     /**
      * Adds a Variable to the Equation.
-     * @param i Value of the variable.
+     * @param s Name of the variable.
      */
-    public void addVariable(double i) { }
+    public void addVariable(String s) { this.o = new Variable(s); }
+
+    public void addVariableKey(VariableKey vk) { this.o.addVariableKey(vk); }
 
     /**
      * Creates an Addition Equation for use with <i>doubles</i> as terms.
