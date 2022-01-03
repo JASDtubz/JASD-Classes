@@ -1,6 +1,6 @@
 package main.maths;
 
-public class Subtraction extends Operation
+class Subtraction extends Operation
 {
     public Subtraction(double i, double j) { super(i, j); }
 
