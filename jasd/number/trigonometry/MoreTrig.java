@@ -5,6 +5,12 @@ import jasd.number.logarithm.Logarithm;
 public class MoreTrig
 {
 	Logarithm l = new Logarithm();
+	
+	public double sin(double x) { return Math.sin(x); }
+	
+	public double cos(double x) { return Math.cos(x); }
+	
+	public double tan(double x) { return Math.tan(x); }
 
 	public double csc(double x) { return 1 / Math.sin(x); }
 
