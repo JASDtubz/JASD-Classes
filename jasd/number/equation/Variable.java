@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public class Variable extends Operation
+final class Variable extends Operation
 {
     private final String s;
     private double d;
