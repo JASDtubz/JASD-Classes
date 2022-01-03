@@ -1,6 +1,6 @@
 package jasd.number.equation;
 
-public abstract class Operation
+abstract class Operation
 {
     protected double a = 0;
     protected double b = 0;
@@ -43,12 +43,24 @@ public abstract class Operation
 
     public void addVariableKey(VariableKey vk)
     {
-        if (c == 1) { this.p.setValue(vk); }
-        else if (c == 2) { this.o.setValue(vk); }
-        else
+        switch (this.c)
         {
-            this.o.setValue(vk);
-            this.p.setValue(vk);
+            case 1:
+                if (this.p.getC() == 4) { this.p.setValue(vk); }
+                else { this.p.addVariableKey(vk); }
+                    
+                break;
+            case 2:
+                if (this.o.getC() == 4) { this.o.setValue(vk); }
+                else { this.o.addVariableKey(vk); }
+                
+                break;
+            case 3:
+                if (this.o.getC() == 4) { this.o.setValue(vk); }
+                else { this.o.addVariableKey(vk); }
+                
+                if (this.p.getC() == 4) { this.o.setValue(vk); }
+                else { this.p.addVariableKey(vk); }
         }
     }
 
@@ -56,5 +68,5 @@ public abstract class Operation
 
     abstract void setValue(VariableKey vk);
 
-    
+    byte getC() { return this.c; }
 }
