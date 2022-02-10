@@ -57,6 +57,4 @@ public class MoreTrig
 	public double arcsin(double x) { return Math.asin(x); }
 	
 	public double arccos(double x) { return Math.acos(x); }
-	
-	public double arctan(double x) { return Math.atan(x); }
 }
