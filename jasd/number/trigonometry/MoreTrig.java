@@ -53,4 +53,10 @@ public class MoreTrig
 	public double arsech(double x) { return this.l.ln(1 / x + Math.sqrt(1 / (x * x) - 1)); }
 
 	public double arcsch(double x) { return this.l.ln(1 / x + Math.sqrt(1 / (x * x) + 1)); }
+	
+	public double arcsin(double x) { return Math.asin(x); }
+	
+	public double arccos(double x) { return Math.acos(x); }
+	
+	public double arctan(double x) { return Math.atan(x); }
 }
