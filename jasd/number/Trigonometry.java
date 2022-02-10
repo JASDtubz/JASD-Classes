@@ -10,17 +10,17 @@ public class Trigonometry
 
     public static double tan(double x) { return Math.tan(x); }
 
-    public static double csc(double x) { return 1 / Math.sin(x); }
+    public static double csc(double x) { return 1 / Trigonometry.sin(x); }
 
-    public static double sec(double x) { return 1 / Math.cos(x); }
+    public static double sec(double x) { return 1 / Trigonometry.cos(x); }
 
-    public static double cot(double x) { return 1 / Math.tan(x); }
+    public static double cot(double x) { return 1 / Trigonometry.tan(x); }
 
-    public static double crd(double x) { return 2 * Math.sin(x / 2); }
+    public static double crd(double x) { return 2 * Trigonometry.sin(x / 2); }
 
-    public static double versin(double x) { return 1 - Math.cos(x); }
+    public static double versin(double x) { return 1 - Trigonometry.cos(x); }
 
-    public static double coversin(double x) { return 1 - Math.sin(x); }
+    public static double coversin(double x) { return 1 - Trigonometry.sin(x); }
 
     public static double haversin(double x) { return 0.5 * Trigonometry.versin(x); }
 
@@ -62,5 +62,5 @@ public class Trigonometry
     
     public static double arcsec(double x) { return Trigonometry.arccos(1 / x); }
     
-    public static double arccsc(double x) { return Double.NaN; }
+    public static double arccsc(double x) { return Trigonometry.arcsin(1 / x); }
 }
