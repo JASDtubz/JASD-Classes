@@ -6,7 +6,7 @@ public class Logarithm
 
     public static double lg(x) { return Math.log(x); }
 
-    public static double ln(x) { return this.logBase(Math.E, x); }
+    public static double ln(x) { return Logarithm.log(Math.E, x); }
 
-    public static double lb(x) { return this.logBase(2, x); }
+    public static double lb(x) { return Logarithm.log(2, x); }
 }
