@@ -57,4 +57,10 @@ public class Trigonometry
     public static double arccos(double x) { return Math.acos(x); }
 
     public static double arctan(double x) { return Math.atan(x); }
+    
+    public static double arccot(double x) { return Double.NaN; }
+    
+    public static double arcsec(double x) { return Trigonometry.arccos(1 / x); }
+    
+    public static double arccsc(double x) { return Double.NaN; }
 }
