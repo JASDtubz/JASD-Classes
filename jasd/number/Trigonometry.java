@@ -1,6 +1,6 @@
 package jasd.number;
 
-import jasd.number.logarithm.Logarithm;
+import jasd.number.Logarithm;
 
 public class MoreTrig
 {	
@@ -40,9 +40,9 @@ public class MoreTrig
 
 	public static double csch(double x) { return 1 / this.sinh(x); }
 
-	public static double arsinh(double x) { return this.l.ln(x + Math.sqrt(x * x + 1)); }
+	public static double arsinh(double x) { return Logarithm.ln(x + Math.sqrt(x * x + 1)); }
 
-	public static double arcosh(double x) { return this.l.ln(x + Math.sqrt(x * x - 1)); }
+	public static double arcosh(double x) { return Logarithm.ln(x + Math.sqrt(x * x - 1)); }
 
 	public static double artanh(double x) { return 0.5 * this.l.ln((x + 1) / (x - 1)); }
 
