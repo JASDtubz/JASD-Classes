@@ -2,7 +2,7 @@ package jasd.number.logarithm;
 
 public class Logarithm
 {
-    public static double logBase(x, y) { return Math.log(y) / Math.log(x); }
+    public static double log(x, y) { return Math.log(y) / Math.log(x); }
 
     public static double lg(x) { return Math.log(x); }
 
