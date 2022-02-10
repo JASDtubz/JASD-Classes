@@ -58,7 +58,7 @@ public class Trigonometry
 
     public static double arctan(double x) { return Math.atan(x); }
     
-    public static double arccot(double x) { return Trigonometry.arccos(x / Math.sqrt(1 + d * d)); }
+    public static double arccot(double x) { return Trigonometry.arccos(x / Math.sqrt(1 + x * x)); }
     
     public static double arcsec(double x) { return Trigonometry.arccos(1 / x); }
     
