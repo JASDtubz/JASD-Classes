@@ -28,11 +28,11 @@ public class Trigonometry
 
     public static double excsc(double x) { return Trigonometry.exsec(Math.PI / 2 - x); }
 
-    public static double sinh(double x) { return (Math.pow(Math.E, x) - Math.pow(Math.E, -x)) / 2; }
+    public static double sinh(double x) { return Math.sinh(x); }
 
-    public static double cosh(double x) { return (Math.pow(Math.E, x) + Math.pow(Math.E, -x)) / 2; }
+    public static double cosh(double x) { return Math.cosh(x); }
 
-    public static double tanh(double x) { return Trigonometry.sinh(x) / Trigonometry.cosh(x); }
+    public static double tanh(double x) { return Math.tanh(x); }
 
     public static double coth(double x) { return Trigonometry.cosh(x) / Trigonometry.sinh(x); }
 
