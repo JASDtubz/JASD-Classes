@@ -23,6 +23,16 @@ public class Trigonometry
     public static double coversin(double x) { return 1 - Trigonometry.sin(x); }
 
     public static double haversin(double x) { return 0.5 * Trigonometry.versin(x); }
+    
+    public static double hacoversin(double x) { return Trigonometry.coversin(x) / 2; }
+    
+    public static double vercosin(double x) { return 1 + Trigonometry.cos(x); }
+    
+    public static double covercosin(double x) { return 1 + trigonometry.sin(x); }
+    
+    public static double havercosin(double x) { return Trigonometry.vercosin(x) / 2; }
+    
+    public static double hacovercosin(double x) { return Trigonometry.covercosin(x) / 2; }
 
     public static double exsec(double x) { return Trigonometry.sec(x) - 1; }
 
