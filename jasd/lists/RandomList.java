@@ -6,7 +6,7 @@ public class RandomList
 {
     private final Random random;
 
-    public RandomList() { this(new Random().nextLong()); }
+    public RandomList() { this.random = new Random(); }
 
     public RandomList(long seed) { this.random = new Random(seed); }
 
