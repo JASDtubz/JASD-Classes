@@ -26,5 +26,5 @@ public class BitOperator
     
     public static int imply(int x, int y) { return ~x | y; }
     
-    public static int cimply(int x, int y) { return x | ~y; }
+    public static int nimply(int x, int y) { return x | ~y; } // previously cimply
 }
