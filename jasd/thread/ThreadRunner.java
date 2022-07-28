@@ -11,7 +11,15 @@ public class ThreadRunner implements Runnable
     @Override
     public void run() { this.method.run(); }
 
+    /**
+     * Sets the method that could be run.
+     * @param r Runnable object to set.
+     */
     public void setMethod(Runnable r) { this.method = r; }
 
+    /**
+     * Returns the Runnable stored for running.
+     * @return Stored Runnable
+     */
     public Runnable getMethod() { return this.method; }
 }
