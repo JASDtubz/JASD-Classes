@@ -1,5 +1,3 @@
-package jasd.lists;
-
 import java.util.Random;
 
 public class RandomList
@@ -201,4 +199,29 @@ public class RandomList
     }
 
     public String getRandomItem(String[] list) { return list[this.random.nextInt(list.length)]; }
+
+    @SuppressWarnings("unchecked")
+    public <C> C[] randomizeList(C[] list)
+    {
+        Object[] rand = new Object[list.length];
+
+        for (int i = 0; i < rand.length; i++)
+        {
+            int index = this.random.nextInt(list.length);
+            Object[] temp = new Object[list.length - 1];
+
+            rand[i] = list[index];
+
+            System.arraycopy(list, 0, temp, 0, index);
+            System.arraycopy(list, index + 1, temp, index, temp.length - index);
+
+            list = (C[]) temp;
+        }
+
+        list = (C[]) rand;
+
+        return list;
+    }
+
+    public <C> C getRandomItem(C[] list) { return list[this.random.nextInt(list.length)]; }
 }
