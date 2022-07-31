@@ -200,7 +200,7 @@ public class RandomList
 
     public String getRandomItem(String[] list) { return list[this.random.nextInt(list.length)]; }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings(value = "unchecked")
     public <C> C[] randomizeList(C[] list)
     {
         Object[] rand = new Object[list.length];
