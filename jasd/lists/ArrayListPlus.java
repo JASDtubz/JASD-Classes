@@ -12,10 +12,12 @@ import java.util.Random;
  * Methods will return {@code false} if the operation makes the list look the same.
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.1.10.05
+ * @version 2022.8.1.10.08
  */
 public class ArrayListPlus <C> extends ArrayList<C>
 {
+    private static final long serialVersionUID = 202281100851L;
+
     /**
      * Constructs a new {@code ArrayListPlus} object.
      */
@@ -74,7 +76,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
      * @param b Index of second item. (Inclusive)
      * @return {@code true} if the items have been swapped and different.
      */
-    final public boolean swap(final int a, final int b)
+    public final boolean swap(final int a, final int b)
     {
         final C c = super.get(a), d = super.get(b);
 
