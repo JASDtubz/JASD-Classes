@@ -150,7 +150,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
     }
 
     /**
-     * Replaced the entire list with a new one.
+     * Replaces the entire list with a new one.
      * @param list List to replace current one.
      * @return {@code true} if the two lists are different.
      */
