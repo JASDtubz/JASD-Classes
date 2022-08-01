@@ -25,7 +25,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
     public ArrayListPlus(final Collection<? extends C> c) { super(c); }
 
     /**
-     * Constructs a new ArrayListPlus object with an initial size.
+     * Constructs a new {@code ArrayListPlus} object with an initial size.
      * @param i Initial list size.
      */
     public ArrayListPlus(final int i) { super(i); }
