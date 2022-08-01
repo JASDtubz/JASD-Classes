@@ -32,14 +32,14 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Shuffles the list using the {@code Random} class.
-     * @return {@code TRUE} if the list has been scrambled.
+     * @return {@code true} if the list has been scrambled.
      */
     public boolean shuffleList() { return this.shuffleList(new Random()); }
 
     /**
      * Shuffles the list using the {@code Random} class with a seed.
      * @param seed Seed for the {@code Random} class.
-     * @return {@code TRUE} if the list has been scrambled.
+     * @return {@code true} if the list has been scrambled.
      */
     public boolean shuffleList(final long seed) { return this.shuffleList(new Random(seed)); }
 
@@ -69,7 +69,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
      * Swaps 2 items in the list.
      * @param a Index of first item.
      * @param b Index of second item.
-     * @return {@code TRUE} if the items have been swapped.
+     * @return {@code true} if the items have been swapped.
      */
     final public boolean swap(final int a, final int b)
     {
@@ -85,7 +85,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
      * Swaps 2 items in the list.
      * @param a Item in list to be swapped 1.
      * @param b Item in list to be swapped 2.
-     * @return {@code TRUE} if the items have been swapped.
+     * @return {@code true} if the items have been swapped.
      */
     public boolean swap(C a, C b)
     {
@@ -96,7 +96,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Sorts the hash codes of the objects in the list.
-     * @return {@code TRUE} if the items have been sorted.
+     * @return {@code true} if the items have been sorted.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sortByHashCode()
@@ -132,7 +132,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Sorts the list using the {@code Arrays.sort()} method.
-     * @return {@code TRUE} if the list has been sorted.
+     * @return {@code true} if the list has been sorted.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sort()
@@ -152,7 +152,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
     /**
      * Replaced the entire list with a new one.
      * @param list List to replace current one.
-     * @return {@code TRUE} if the two lists are different.
+     * @return {@code true} if the two lists are different.
      */
     public boolean setList(final C[] list)
     {
