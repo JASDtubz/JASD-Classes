@@ -12,11 +12,11 @@ import java.util.Random;
  * Methods will return {@code false} if the operation makes the list look the same.
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.1.10.27
+ * @version 2022.8.1.10.46
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
-    private static final long serialVersionUID = 202281102743L;
+    private static final long serialVersionUID = 202281104615L;
 
     /**
      * Constructs a new {@code ArrayListPlus} object.
@@ -149,7 +149,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
         Arrays.sort(list);
         this.setList((C[]) list);
 
-        return !Arrays.equals(prev, super.toArray());
+        return !Arrays.equals(prev, list);
     }
 
     /**
