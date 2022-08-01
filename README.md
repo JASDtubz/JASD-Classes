@@ -3,8 +3,8 @@ These sets of packages are made by JASD and are required for any Java program co
 
 ## Hierarchy
 package jasd<br>
-> jasd.error<br>
-> > jasd.error.WrongFileTypeException<br>
-> jasd.lists<br>
-> > jasd.lists.ArrayListPlus<br>
-> > jasd.lists.RandomList<br>
+&emsp;jasd.error<br>
+&emsp;&emsp;jasd.error.WrongFileTypeException<br>
+&emsp;jasd.lists<br>
+&emsp;&emsp;jasd.lists.ArrayListPlus<br>
+&emsp;&emsp;jasd.lists.RandomList<br>
