@@ -7,19 +7,19 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * ArrayListPlus is an extension of the ArrayList class that consists of less used methods.
+ * {@code ArrayListPlus} is an extension of the {@code ArrayList} class that consists of less used methods.
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
  */
 public class ArrayListPlus <C> extends ArrayList<C>
 {
     /**
-     * Constructs a new ArrayListPlus object.
+     * Constructs a new {@code ArrayListPlus} object.
      */
     public ArrayListPlus() { super(); }
 
     /**
-     * Constructs a new ArrayListPlus object containing a Collection.
+     * Constructs a new {@code ArrayListPlus} object containing a Collection.
      * @param c Starting list.
      */
     public ArrayListPlus(final Collection<? extends C> c) { super(c); }
@@ -31,15 +31,15 @@ public class ArrayListPlus <C> extends ArrayList<C>
     public ArrayListPlus(final int i) { super(i); }
 
     /**
-     * Shuffles the list using the Random class.
-     * @return TRUE if the list has been scrambled.
+     * Shuffles the list using the {@code Random} class.
+     * @return {@code TRUE} if the list has been scrambled.
      */
     public boolean shuffleList() { return this.shuffleList(new Random()); }
 
     /**
-     * Shuffles the list using the Random class with a seed.
-     * @param seed Seed for the Random class.
-     * @return TRUE if the list has been scrambled.
+     * Shuffles the list using the {@code Random} class with a seed.
+     * @param seed Seed for the {@code Random} class.
+     * @return {@code TRUE} if the list has been scrambled.
      */
     public boolean shuffleList(final long seed) { return this.shuffleList(new Random(seed)); }
 
@@ -69,7 +69,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
      * Swaps 2 items in the list.
      * @param a Index of first item.
      * @param b Index of second item.
-     * @return TRUE if the items have been swapped.
+     * @return {@code TRUE} if the items have been swapped.
      */
     final public boolean swap(final int a, final int b)
     {
@@ -85,7 +85,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
      * Swaps 2 items in the list.
      * @param a Item in list to be swapped 1.
      * @param b Item in list to be swapped 2.
-     * @return TRUE if the items have been swapped.
+     * @return {@code TRUE} if the items have been swapped.
      */
     public boolean swap(C a, C b)
     {
@@ -96,7 +96,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Sorts the hash codes of the objects in the list.
-     * @return TRUE if the items have been sorted.
+     * @return {@code TRUE} if the items have been sorted.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sortByHashCode()
@@ -131,8 +131,8 @@ public class ArrayListPlus <C> extends ArrayList<C>
     }
 
     /**
-     * Sorts the list using the Arrays.sort() method.
-     * @return TRUE if the list has been sorted.
+     * Sorts the list using the {@code Arrays.sort()} method.
+     * @return {@code TRUE} if the list has been sorted.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sort()
@@ -152,7 +152,7 @@ public class ArrayListPlus <C> extends ArrayList<C>
     /**
      * Replaced the entire list with a new one.
      * @param list List to replace current one.
-     * @return TRUE if the two lists are different.
+     * @return {@code TRUE} if the two lists are different.
      */
     public boolean setList(final C[] list)
     {
