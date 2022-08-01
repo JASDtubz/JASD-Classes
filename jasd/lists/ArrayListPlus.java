@@ -12,11 +12,11 @@ import java.util.Random;
  * Methods will return {@code false} if the operation makes the list look the same.
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.1.10.08
+ * @version 2022.8.1.10.21
  */
 public class ArrayListPlus <C> extends ArrayList<C>
 {
-    private static final long serialVersionUID = 202281100851L;
+    private static final long serialVersionUID = 202281102113L;
 
     /**
      * Constructs a new {@code ArrayListPlus} object.
@@ -72,29 +72,32 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Swaps 2 items in the list.
-     * @param a Index of first item. (Inclusive)
-     * @param b Index of second item. (Inclusive)
+     * @param first Index of first item. (Inclusive)
+     * @param second Index of second item. (Inclusive)
      * @return {@code true} if the items have been swapped and different.
      */
-    public final boolean swap(final int a, final int b)
+    public final boolean swap(final int first, final int second)
     {
-        final C c = super.get(a), d = super.get(b);
+        final C c = super.get(first), d = super.get(second);
 
-        super.set(a, d);
-        super.set(b, c);
+        super.set(first, d);
+        super.set(second, c);
 
         return !c.equals(d);
     }
 
     /**
      * Swaps 2 items in the list.
-     * @param a Item in list to be swapped 1.
-     * @param b Item in list to be swapped 2.
+     * @param first Item in list to be swapped 1.
+     * @param second Item in list to be swapped 2.
      * @return {@code true} if the items have been swapped and different.
      */
-    public boolean swap(C a, C b)
+    public boolean swap(C first, C second)
     {
-        if (super.contains(a) && super.contains(b)) { return this.swap(super.indexOf(a), super.indexOf(b)); }
+        if (super.contains(first) && super.contains(second))
+        {
+            return this.swap(super.indexOf(first), super.indexOf(second));
+        }
 
         return false;
     }
@@ -172,33 +175,33 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Reverses the list from a starting and ending index.
-     * @param a Starting index to reverse. (Inclusive)
-     * @param b Ending index to reverse. (Inclusive)
+     * @param start Starting index to reverse. (Inclusive)
+     * @param end Ending index to reverse. (Inclusive)
      * @return {@code true} if the list has been reversed and changed.
      */
     @SuppressWarnings(value = "unchecked")
-    public boolean reverse(int a, final int b)
+    public boolean reverse(int start, final int end)
     {
         final Object[] prev = super.toArray();
 
-        for (int index = b; a <= b; a++, index--) { super.set(a, (C) prev[index]); }
+        for (int index = end; start <= end; start++, index--) { super.set(start, (C) prev[index]); }
 
         return !Arrays.equals(prev, super.toArray());
     }
 
     /**
      * Shifts the list right by a certain amount.
-     * @param a Shift amount.
+     * @param amount Shift amount.
      * @return {@code true} if the list has been shifted and changed.
      */
-    public boolean shiftRight(final int a) { return this.shift(-a); }
+    public boolean shiftRight(final int amount) { return this.shift(-amount); }
 
     /**
      * Shifts the list left by a certain amount.
-     * @param a Shift amount.
+     * @param amount Shift amount.
      * @return {@code true} if the list has been shifted and changed.
      */
-    public boolean shiftLeft(final int a) { return this.shift(a); }
+    public boolean shiftLeft(final int amount) { return this.shift(amount); }
 
     @SuppressWarnings(value = "unchecked")
     private boolean shift(int a)
@@ -232,16 +235,16 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Returns a sublist from the indexes provided.
-     * @param a Starting index. (Inclusive)
-     * @param b Ending index. (Inclusive)
+     * @param start Starting index. (Inclusive)
+     * @param end Ending index. (Inclusive)
      * @return Sublist from the indexes.
      */
     @SuppressWarnings(value = "unchecked")
-    public C[] getSublist(int a, final int b)
+    public C[] getSublist(int start, final int end)
     {
-        final Object[] sub = new Object[b - a + 1];
+        final Object[] sub = new Object[end - start + 1];
 
-        for (int index = 0; a <= b; a++, index++) { sub[index] = super.get(a); }
+        for (int index = 0; start <= end; start++, index++) { sub[index] = super.get(start); }
 
         return (C[]) sub;
     }
