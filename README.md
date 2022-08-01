@@ -3,9 +3,9 @@ These sets of packages are made by JASD and are required for any Java program co
 
 ## Hierarchy
 
-package jasd\n
-  jasd.error\n
-    jasd.error.WrongFileTypeException\n
+package jasd
+  jasd.error
+    jasd.error.WrongFileTypeException
   jasd.lists
     jasd.lists.ArrayListPlus
     jasd.lists.RandomList
