@@ -4,7 +4,7 @@ These sets of packages are made by JASD and are required for any Java program co
 ## Hierarchy
 package jasd<br>
 > jasd.error<br>
->> jasd.error.WrongFileTypeException<br>
-  jasd.lists
-    jasd.lists.ArrayListPlus
-    jasd.lists.RandomList
+> > jasd.error.WrongFileTypeException<br>
+> jasd.lists<br>
+    jasd.lists.ArrayListPlus<br>
+    jasd.lists.RandomList<br>
