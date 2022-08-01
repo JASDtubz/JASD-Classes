@@ -7,9 +7,12 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * {@code ArrayListPlus} is an extension of the {@code ArrayList} class that consists of less used methods.
+ * {@code ArrayListPlus} is an extension of the {@code ArrayList} class that consists of less used methods. These
+ * methods are mostly operations that you can do to a list and will return {@code true} if the list has been changed.
+ * Methods will return {@code false} if the operation makes the list look the same.
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
+ * @version 2022.8.1.10.05
  */
 public class ArrayListPlus <C> extends ArrayList<C>
 {
@@ -32,19 +35,19 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Shuffles the list using the {@code Random} class.
-     * @return {@code true} if the list has been scrambled.
+     * @return {@code true} if the list has been scrambled and changed.
      */
-    public boolean shuffleList() { return this.shuffleList(new Random()); }
+    public boolean shuffle() { return this.shuffle(new Random()); }
 
     /**
      * Shuffles the list using the {@code Random} class with a seed.
      * @param seed Seed for the {@code Random} class.
-     * @return {@code true} if the list has been scrambled.
+     * @return {@code true} if the list has been scrambled and changed.
      */
-    public boolean shuffleList(final long seed) { return this.shuffleList(new Random(seed)); }
+    public boolean shuffle(final long seed) { return this.shuffle(new Random(seed)); }
 
     @SuppressWarnings(value = "unchecked")
-    private boolean shuffleList(final Random r)
+    private boolean shuffle(final Random r)
     {
         Object[] list = super.toArray();
         final Object[] prev = list.clone();
@@ -67,25 +70,25 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Swaps 2 items in the list.
-     * @param a Index of first item.
-     * @param b Index of second item.
-     * @return {@code true} if the items have been swapped.
+     * @param a Index of first item. (Inclusive)
+     * @param b Index of second item. (Inclusive)
+     * @return {@code true} if the items have been swapped and different.
      */
     final public boolean swap(final int a, final int b)
     {
-        C c = super.get(a);
+        final C c = super.get(a), d = super.get(b);
 
-        super.set(a, super.get(b));
+        super.set(a, d);
         super.set(b, c);
 
-        return !super.get(a).equals(super.get(b));
+        return !c.equals(d);
     }
 
     /**
      * Swaps 2 items in the list.
      * @param a Item in list to be swapped 1.
      * @param b Item in list to be swapped 2.
-     * @return {@code true} if the items have been swapped.
+     * @return {@code true} if the items have been swapped and different.
      */
     public boolean swap(C a, C b)
     {
@@ -96,14 +99,13 @@ public class ArrayListPlus <C> extends ArrayList<C>
 
     /**
      * Sorts the hash codes of the objects in the list.
-     * @return {@code true} if the items have been sorted.
+     * @return {@code true} if the items have been sorted and changed.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sortByHashCode()
     {
         final int length = super.size();
         final int[] codes = new int[length];
-        final Object[] list = new Object[length];
         final Object[] prev = super.toArray();
 
         for (int i = 0; i < length; i++) { codes[i] = super.get(i).hashCode(); }
@@ -114,34 +116,30 @@ public class ArrayListPlus <C> extends ArrayList<C>
         {
             for (int j = 0; j < length; j++)
             {
-                final C c = super.get(j);
+                final C c = (C) prev[j];
 
                 if (codes[i] == c.hashCode())
                 {
-                    list[i] = c;
+                    super.set(i, c);
 
                     break;
                 }
             }
         }
 
-        this.setList((C[]) list);
-
         return !Arrays.equals(prev, super.toArray());
     }
 
     /**
      * Sorts the list using the {@code Arrays.sort()} method.
-     * @return {@code true} if the list has been sorted.
+     * @return {@code true} if the list has been sorted and changed.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sort()
     {
-        final Object[] list = super.toArray();
-        final C c = (C) list[0];
-        final Object[] prev = super.toArray();
+        final Object[] list = super.toArray(), prev = super.toArray();
 
-        if (!(c instanceof Comparable)) { return this.sortByHashCode(); }
+        if (!(list[0] instanceof Comparable)) { return this.sortByHashCode(); }
 
         Arrays.sort(list);
         this.setList((C[]) list);
@@ -162,5 +160,87 @@ public class ArrayListPlus <C> extends ArrayList<C>
         Collections.addAll(this, list);
 
         return !Arrays.equals(prev, super.toArray());
+    }
+
+    /**
+     * Reverses the entire list.
+     * @return {@code true} if the list has been reversed and changed.
+     */
+    public boolean reverse() { return this.reverse(0, super.size() - 1); }
+
+    /**
+     * Reverses the list from a starting and ending index.
+     * @param a Starting index to reverse. (Inclusive)
+     * @param b Ending index to reverse. (Inclusive)
+     * @return {@code true} if the list has been reversed and changed.
+     */
+    @SuppressWarnings(value = "unchecked")
+    public boolean reverse(int a, final int b)
+    {
+        final Object[] prev = super.toArray();
+
+        for (int index = b; a <= b; a++, index--) { super.set(a, (C) prev[index]); }
+
+        return !Arrays.equals(prev, super.toArray());
+    }
+
+    /**
+     * Shifts the list right by a certain amount.
+     * @param a Shift amount.
+     * @return {@code true} if the list has been shifted and changed.
+     */
+    public boolean shiftRight(final int a) { return this.shift(-a); }
+
+    /**
+     * Shifts the list left by a certain amount.
+     * @param a Shift amount.
+     * @return {@code true} if the list has been shifted and changed.
+     */
+    public boolean shiftLeft(final int a) { return this.shift(a); }
+
+    @SuppressWarnings(value = "unchecked")
+    private boolean shift(int a)
+    {
+        final int length = super.size();
+        final Object[] prev = super.toArray(), first, second, full = new Object[length];
+
+        if (a < 0)
+        {
+            a = -a;
+
+            if (a >= length) { a %= length; }
+
+            first = this.getSublist(0, length - a - 1);
+            second = this.getSublist(length - a, length - 1);
+        }
+        else
+        {
+            if (a >= length) { a %= length; }
+
+            first = this.getSublist(0, a - 1);
+            second = this.getSublist(a, length - 1);
+        }
+
+        System.arraycopy(second, 0, full, 0, second.length);
+        System.arraycopy(first, 0, full, second.length, first.length);
+        this.setList((C[]) full);
+
+        return !Arrays.equals(prev, super.toArray());
+    }
+
+    /**
+     * Returns a sublist from the indexes provided.
+     * @param a Starting index. (Inclusive)
+     * @param b Ending index. (Inclusive)
+     * @return Sublist from the indexes.
+     */
+    @SuppressWarnings(value = "unchecked")
+    public C[] getSublist(int a, final int b)
+    {
+        final Object[] sub = new Object[b - a + 1];
+
+        for (int index = 0; a <= b; a++, index++) { sub[index] = super.get(a); }
+
+        return (C[]) sub;
     }
 }
