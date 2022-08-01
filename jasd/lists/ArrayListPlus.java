@@ -9,6 +9,7 @@ import java.util.Random;
 /**
  * ArrayListPlus is an extension of the ArrayList class that consists of less used methods.
  * @param <C> Object list type.
+ * @author Jean-Denis Toting de Beauvoir
  */
 public class ArrayListPlus <C> extends ArrayList<C>
 {
