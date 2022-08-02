@@ -3,7 +3,7 @@ package jasd.number;
 /**
  * This class has static methods that does bit-wise operations with 2 integers.
  * @author Jean-Denis Toting de beauvoir
- * @version 2022.8.1.8.17
+ * @version 2022.8.1.20.27
  */
 public class LogicOperations
 {
@@ -11,6 +11,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise false of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise zero.
@@ -19,6 +24,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise nor of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise nor.
@@ -27,6 +37,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise converse nonimplication of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise cnimp.
@@ -35,6 +50,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise first compliment of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise notx.
@@ -43,6 +63,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise nonimplication of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise nimp.
@@ -51,6 +76,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise second compliment of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise noty.
@@ -59,6 +89,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise exclusive or of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise xor.
@@ -67,6 +102,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise nand of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 0</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise nand.
@@ -75,6 +115,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise and of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise and.
@@ -83,6 +128,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise exclusive nor of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise xnor.
@@ -91,6 +141,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise second of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise y.
@@ -99,6 +154,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise implication of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 0</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise imply.
@@ -107,6 +167,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise first of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise x.
@@ -115,6 +180,11 @@ public class LogicOperations
 
     /**
      * Takes the converse implication of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 0</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise nimply.
@@ -123,6 +193,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise or of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 0</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise or.
@@ -131,6 +206,11 @@ public class LogicOperations
 
     /**
      * Takes the bit-wise true of 2 integers.
+     * <p>X | Y | Z</p>
+     * <p>0 | 0 | 1</p>
+     * <p>0 | 1 | 1</p>
+     * <p>1 | 0 | 1</p>
+     * <p>1 | 1 | 1</p>
      * @param x Top integer.
      * @param y Bottom integer.
      * @return Bit-wise one.
