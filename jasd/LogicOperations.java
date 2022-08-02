@@ -3,11 +3,11 @@ package jasd.number;
 /**
  * This class has static methods that does bit-wise operations with 2 integers.
  * @author Jean-Denis Toting de beauvoir
- * @version 2022.8.1.13.38
+ * @version 2022.8.1.8.17
  */
-public class BitOperator
+public class LogicOperations
 {
-    private BitOperator() { }
+    private LogicOperations() { }
 
     /**
      * Takes the bit-wise false of 2 integers.
