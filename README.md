@@ -19,8 +19,8 @@ package jasd<br>
 &emsp;&emsp;&emsp;jasd.number.equation.Subtraction<br>
 &emsp;&emsp;&emsp;jasd.number.equation.Variable<br>
 &emsp;&emsp;&emsp;jasd.number.equation.VariableKey<br>
-&emsp;&emsp;jasd.number.LogicOperations<br>
 &emsp;&emsp;jasd.number.Logarithm<br>
+&emsp;&emsp;jasd.number.LogicOperations<br>
 &emsp;&emsp;jasd.number.Trigonometry<br>
 &emsp;jasd.thread<br>
 &emsp;&emsp;jasd.thread.NewThread<br>
