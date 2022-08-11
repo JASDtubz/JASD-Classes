@@ -2,7 +2,7 @@ package jasd.thread;
 
 public class NewThread
 {
-    public Runnable method;
+    private Runnable method;
 
     public NewThread() { this.method = null; }
 
