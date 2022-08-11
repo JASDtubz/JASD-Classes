@@ -14,24 +14,20 @@ public class ThreadRunner implements Runnable
     /**
      * Sets the method that could be run.
      * @param method Runnable object to set.
+     * @return Previously stored method.
      */
-    public void setMethod(Runnable method) { this.method = method; }
+    public void setMethod(Runnable method)
+    {
+        Runnable r = this.method;
+        
+        this.method = method;
+        
+        return r;
+    }
 
     /**
      * Returns method that is stored.
      * @return Stored Runnable
      */
     public Runnable getMethod() { return this.method; }
-
-    /**
-     * Gets and sets method that is stored.
-     * @param method Runnable object to set.
-     * @return Previously stored method.
-     */
-    public Runnable getsetMethod(Runnable method)
-    {
-        Runnable r = this.method;
-        this.method = method;
-        return r;
-    }
 }
