@@ -22,24 +22,18 @@ public class NewThread
     /**
      * Sets method to be run.
      * @param method Method to be run.
+     * @return Method previously stored.
      */
-    public void setMethod(Runnable method) { this.method = method; }
+    public Runnable setMethod(Runnable method)
+    {
+        Runnable r = this.method;
+        this.method = method;
+        return r;
+    }
 
     /**
      * Gets method stored.
      * @return Method that is stored.
      */
     public Runnable getMethod() { return this.method; }
-
-    /**
-     * Gets and sets method that is stored.
-     * @param method Method to be stored.
-     * @return Previous method stored.
-     */
-    public Runnable getsetMethod(Runnable method)
-    {
-        Runnable r = this.method;
-        this.method = method;
-        return r;
-    }
 }
