@@ -1,13 +1,26 @@
 package jasd.thread;
 
+/**
+ * This class makes an easy way to execute a new thread because it already implements <code>Runnable</code>.
+ */
 public class ThreadRunner implements Runnable
 {
     private Runnable method;
 
+    /**
+     * Creates the object with a <code>null</code> method.
+     */
     public ThreadRunner() { this.method = null; }
 
-    public ThreadRunner(Runnable method) { this.method = method; }
+    /**
+     * Creates the object with a specified method.
+     * @param method Method to be run.
+     */
+    public ThreadRunner(final Runnable method) { this.method = method; }
 
+    /**
+     * This method is required to exist in order to execute the new thread.
+     */
     @Override
     public void run() { this.method.run(); }
 
@@ -16,7 +29,7 @@ public class ThreadRunner implements Runnable
      * @param method Runnable object to set.
      * @return Previously stored method.
      */
-    public Runnable setMethod(Runnable method)
+    public Runnable setMethod(final Runnable method)
     {
         Runnable r = this.method;
         this.method = method;
