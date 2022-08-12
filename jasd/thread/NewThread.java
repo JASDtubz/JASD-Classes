@@ -1,12 +1,22 @@
 package jasd.thread;
 
+/**
+ * This class provides an easy way to make a new thread that runs temporarily.
+ */
 public class NewThread
 {
     private Runnable method;
 
+    /**
+     * Creates a new thread with a <code>null</code> method ready.
+     */
     public NewThread() { this.method = null; }
 
-    public NewThread(Runnable r) { this.method = r; }
+    /**
+     * Creates a new thread with a method ready.
+     * @param method Method for thread to execute.
+     */
+    public NewThread(Runnable method) { this.method = method; }
 
     /**
      * Executes stored method in a new thread.
