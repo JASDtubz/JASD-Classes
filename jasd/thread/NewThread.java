@@ -16,7 +16,7 @@ public class NewThread
      * Creates a new thread with a method ready.
      * @param method Method for thread to execute.
      */
-    public NewThread(Runnable method) { this.method = method; }
+    public NewThread(final Runnable method) { this.method = method; }
 
     /**
      * Executes stored method in a new thread.
@@ -27,16 +27,16 @@ public class NewThread
      * Executes a method in the parameter in a new thread.
      * @param method Method to be run in a new thread.
      */
-    public void execute(Runnable method) { new Thread(new ThreadRunner(method)).start(); }
+    public void execute(final Runnable method) { new Thread(new ThreadRunner(method)).start(); }
 
     /**
      * Sets method to be run.
      * @param method Method to be run.
      * @return Method previously stored.
      */
-    public Runnable setMethod(Runnable method)
+    public Runnable setMethod(final Runnable method)
     {
-        Runnable r = this.method;
+        final Runnable r = this.method;
         this.method = method;
         return r;
     }
