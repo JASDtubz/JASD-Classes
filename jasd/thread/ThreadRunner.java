@@ -31,7 +31,7 @@ public class ThreadRunner implements Runnable
      */
     public Runnable setMethod(final Runnable method)
     {
-        Runnable r = this.method;
+        final Runnable r = this.method;
         this.method = method;
         return r;
     }
