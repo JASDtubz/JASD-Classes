@@ -11,9 +11,9 @@ public class ThreadSleeper
      * Sleeps the current thread for a specified length of milliseconds.
      * @param millis Number of milliseconds the thread will sleep.
      */
-    public static void sleep(final long millis)
+    public static final void sleep(final long millis)
     {
         try { Thread.sleep(millis); }
-        catch (InterruptedException ie) { ie.printStackTrace(); }
+        catch (final InterruptedException ie) { ie.printStackTrace(); }
     }
 }
