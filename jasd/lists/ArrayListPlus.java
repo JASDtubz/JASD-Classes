@@ -10,9 +10,10 @@ import java.util.Random;
  * {@code ArrayListPlus} is an extension of the {@code ArrayList} class that consists of less used methods. These
  * methods are mostly operations that you can do to a list and will return {@code true} if the list has been changed.
  * Methods will return {@code false} if the operation makes the list look the same.
+ *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.1.10.46
+ * @version 2022.8.14.11.01
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
@@ -25,26 +26,32 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Constructs a new {@code ArrayListPlus} object containing a Collection.
+     *
      * @param c Starting list.
      */
     public ArrayListPlus(final Collection<? extends C> c) { super(c); }
 
     /**
      * Constructs a new {@code ArrayListPlus} object with an initial size.
+     *
      * @param i Initial list size.
      */
     public ArrayListPlus(final int i) { super(i); }
 
     /**
      * Shuffles the list using the {@code Random} class.
+     *
      * @return {@code true} if the list has been scrambled and changed.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public boolean shuffle() { return this.shuffle(new Random()); }
 
     /**
      * Shuffles the list using the {@code Random} class with a seed.
+     *
      * @param seed Seed for the {@code Random} class.
      * @return {@code true} if the list has been scrambled and changed.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public boolean shuffle(final long seed) { return this.shuffle(new Random(seed)); }
 
@@ -72,9 +79,11 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Swaps 2 items in the list.
+     *
      * @param first Index of first item. (Inclusive)
      * @param second Index of second item. (Inclusive)
      * @return {@code true} if the items have been swapped and different.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public final boolean swap(final int first, final int second)
     {
@@ -88,9 +97,11 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Swaps 2 items in the list.
+     *
      * @param first Item in list to be swapped 1.
      * @param second Item in list to be swapped 2.
      * @return {@code true} if the items have been swapped and different.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public boolean swap(C first, C second)
     {
@@ -104,6 +115,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Sorts the hash codes of the objects in the list.
+     *
      * @return {@code true} if the items have been sorted and changed.
      */
     @SuppressWarnings(value = "unchecked")
@@ -137,7 +149,11 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Sorts the list using the {@code Arrays.sort()} method.
+     *
      * @return {@code true} if the list has been sorted and changed.
+     * @throws IllegalArgumentException {@inheritDoc}
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws NullPointerException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
     public boolean sort()
@@ -154,8 +170,12 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Replaces the entire list with a new one.
+     *
      * @param list List to replace current one.
      * @return {@code true} if the two lists are different.
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws NullPointerException {@inheritDoc}
+     * @throws IllegalArgumentException {@inheritDoc}
      */
     public boolean setList(final C[] list)
     {
@@ -169,15 +189,23 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Reverses the entire list.
+     *
      * @return {@code true} if the list has been reversed and changed.
      */
     public boolean reverse() { return this.reverse(0, super.size() - 1); }
 
     /**
      * Reverses the list from a starting and ending index.
+     *
      * @param start Starting index to reverse. (Inclusive)
      * @param end Ending index to reverse. (Inclusive)
      * @return {@code true} if the list has been reversed and changed.
+     * @throws ArrayIndexOutOfBoundsException {@inheritDoc}
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws ClassCastException {@inheritDoc}
+     * @throws NullPointerException {@inheritDoc}
+     * @throws IllegalArgumentException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
     public boolean reverse(int start, final int end)
@@ -191,8 +219,11 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Shifts the list right by a certain amount.
+     *
      * @param amount Shift amount.
      * @return {@code true} if the list has been shifted and changed.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
+     *
      */
     public boolean shiftRight(final int amount) { return this.shift(-amount); }
 
@@ -200,6 +231,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * Shifts the list left by a certain amount.
      * @param amount Shift amount.
      * @return {@code true} if the list has been shifted and changed.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public boolean shiftLeft(final int amount) { return this.shift(amount); }
 
@@ -235,17 +267,65 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
     /**
      * Returns a sublist from the indexes provided.
+     *
      * @param start Starting index. (Inclusive)
      * @param end Ending index. (Inclusive)
      * @return Sublist from the indexes.
+     * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
     public C[] getSublist(int start, final int end)
     {
         final Object[] sub = new Object[end - start + 1];
 
+        System.out.println(sub.length);
+
         for (int index = 0; start <= end; start++, index++) { sub[index] = super.get(start); }
 
         return (C[]) sub;
+    }
+
+    /**
+     * Returns a list of all the locations of a certain item in the list.
+     *
+     * @param item Item to look for.
+     * @return List of the indexes of the item.
+     * @throws UnsupportedOperationException {@inheritDoc}
+     */
+    public int[] indexesOf(final C item)
+    {
+        final ArrayListPlus<C> list = this;
+        int[] indexes = new int[0];
+
+        while (list.contains(item))
+        {
+            indexes = this.addToList(indexes, list.indexOf(item));
+            list.remove(item);
+        }
+
+        return indexes;
+    }
+
+    /**
+     * Returns the amount of indexes of a specific item in the list.
+     *
+     * @param item Item to look for.
+     * @return Amount of indexes in the list.
+     * @throws UnsupportedOperationException {@inheritDoc}
+     */
+    public int amountOf(final C item) { return this.indexesOf(item).length; }
+
+    //REMOVE ONCE ARRAYSPLUS GETS BUILT
+    private int[] addToList(int[] ii, final int i)
+    {
+        final int[] jj = new int[ii.length + 1];
+
+        System.arraycopy(ii, 0, jj, 0, ii.length);
+
+        jj[ii.length] = i;
+
+        ii = jj;
+
+        return ii;
     }
 }
