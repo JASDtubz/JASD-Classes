@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.14.11.01
+ * @version 2022.8.15.21.21
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
@@ -177,7 +177,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @throws NullPointerException {@inheritDoc}
      * @throws IllegalArgumentException {@inheritDoc}
      */
-    public boolean setList(final C[] list)
+    public final boolean setList(final C[] list)
     {
         Object[] prev = super.toArray();
 
@@ -200,7 +200,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @param start Starting index to reverse. (Inclusive)
      * @param end Ending index to reverse. (Inclusive)
      * @return {@code true} if the list has been reversed and changed.
-     * @throws ArrayIndexOutOfBoundsException {@inheritDoc}
+     * @throws ArrayIndexOutOfBoundsException {@inheritDoc} A check will be added in a later version.
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @throws UnsupportedOperationException {@inheritDoc}
      * @throws ClassCastException {@inheritDoc}
@@ -274,7 +274,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
-    public C[] getSublist(int start, final int end)
+    public final C[] getSublist(int start, final int end)
     {
         final Object[] sub = new Object[end - start + 1];
 
