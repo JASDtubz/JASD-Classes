@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.15.21.21
+ * @version 2022.8.18.13.36
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
@@ -86,13 +86,8 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public final boolean swap(final int first, final int second)
-    {
-        final C c = super.get(first), d = super.get(second);
-
-        super.set(first, d);
-        super.set(second, c);
-
-        return !c.equals(d);
+    {        
+        return !super.set(first, super.set(second, super.get(first))).equals(super.get(first));
     }
 
     /**
