@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.18.13.54
+ * @version 2022.8.18.14.03
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
@@ -160,7 +160,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
     
     public boolean sort(final int min, final int max)
     {
-        final Object[] list = super.toArray(), prev = super.toArray();
+        final Object[] list = super.toArray(), list.clone();
 
         if (!(list[0] instanceof Comparable)) { return this.sortByHashCode(min, max); }
 
