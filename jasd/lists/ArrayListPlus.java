@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.18.13.36
+ * @version 2022.8.18.13.54
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
@@ -76,6 +76,10 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
         return !Arrays.equals(prev, super.toArray());
     }
+    
+    //TODO shuffle(int min, int max);
+    
+    //TODO shuffle(int min, int max, long seed);
 
     /**
      * Swaps 2 items in the list.
@@ -113,20 +117,21 @@ public class ArrayListPlus<C> extends ArrayList<C>
      *
      * @return {@code true} if the items have been sorted and changed.
      */
+    public boolean sortByHashCode() { return this.sortByHashCode(0, super.size() - 1); }
+    
     @SuppressWarnings(value = "unchecked")
-    public boolean sortByHashCode()
+    public boolean sortByHashCode(final int min, final int max)
     {
-        final int length = super.size();
-        final int[] codes = new int[length];
+        final int[] codes = new int[super.size()];
         final Object[] prev = super.toArray();
 
-        for (int i = 0; i < length; i++) { codes[i] = super.get(i).hashCode(); }
+        for (int i = min; i <= max; i++) { codes[i] = super.get(i).hashCode(); }
 
         Arrays.sort(codes);
 
-        for (int i = 0; i < length; i++)
+        for (int i = min; i <= max; i++)
         {
-            for (int j = 0; j < length; j++)
+            for (int j = min; j <= max; j++)
             {
                 final C c = (C) prev[j];
 
@@ -151,13 +156,15 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @throws NullPointerException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
-    public boolean sort()
+    public boolean sort() { return this.sort(0, super.size() - 1); }
+    
+    public boolean sort(final int min, final int max)
     {
         final Object[] list = super.toArray(), prev = super.toArray();
 
-        if (!(list[0] instanceof Comparable)) { return this.sortByHashCode(); }
+        if (!(list[0] instanceof Comparable)) { return this.sortByHashCode(min, max); }
 
-        Arrays.sort(list);
+        Arrays.sort(list, min, max + 1);
         this.setList((C[]) list);
 
         return !Arrays.equals(prev, list);
