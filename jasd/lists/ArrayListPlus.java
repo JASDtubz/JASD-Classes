@@ -2,8 +2,6 @@ package jasd.lists;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -13,11 +11,11 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.24.12.51
+ * @version 2022.8.28.15.59
  */
 public class ArrayListPlus<C> extends ArrayList<C>
 {
-    private static final long serialVersionUID = 202281104615L;
+    private static final long serialVersionUID = 1114755249L;
 
     /**
      * Constructs a new {@code ArrayListPlus} object.
@@ -29,7 +27,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
      *
      * @param c Starting list.
      */
-    public ArrayListPlus(final Collection<? extends C> c) { super(c); }
+    public ArrayListPlus(final java.util.Collection<? extends C> c) { super(c); }
 
     /**
      * Constructs a new {@code ArrayListPlus} object with an initial size.
@@ -76,29 +74,31 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
         return !Arrays.equals(prev, super.toArray());
     }
-    
+
     //TODO shuffle(int min, int max);
-    
+
     //TODO shuffle(int min, int max, long seed);
 
     /**
      * Swaps 2 items in the list.
      *
-     * @param first Index of first item. (Inclusive)
-     * @param second Index of second item. (Inclusive)
+     * @param first Index of first item.
+     * @param second Index of second item.
      * @return {@code true} if the items have been swapped and different.
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     public final boolean swap(final int first, final int second)
-    {        
+    {
+        if (!this.isValidRange(first, second + 1)) { return false; }
+
         return !super.set(first, super.set(second, super.get(first))).equals(super.get(first));
     }
 
     /**
      * Swaps 2 items in the list.
      *
-     * @param first Item in list to be swapped 1.
-     * @param second Item in list to be swapped 2.
+     * @param first First item to be swapped.
+     * @param second Second item to be swapped.
      * @return {@code true} if the items have been swapped and different.
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
@@ -113,25 +113,39 @@ public class ArrayListPlus<C> extends ArrayList<C>
     }
 
     /**
-     * Sorts the hash codes of the objects in the list.
+     * Sorts the hash codes of the entire list of objects in the list.
      *
      * @return {@code true} if the items have been sorted and changed.
      */
-    public boolean sortByHashCode() { return this.sortByHashCode(0, super.size() - 1); }
-    
+    public boolean sortByHashCode() { return this.sortByHashCode(0, super.size()); }
+
+    /**
+     * Sorts the hash codes of the objects from a minimum and maximum index in the list.
+     *
+     * @param min Minimum index. (Inclusive)
+     * @param max Maximum index. (Exclusive)
+     * @return {@code true} if the items have been sorted and changed.
+     */
     @SuppressWarnings(value = "unchecked")
-    public boolean sortByHashCode(final int min, final int max)
+    public boolean sortByHashCode(int min, int max)
     {
+        if (!this.isValidRange(min, max))
+        {
+            if (this.isValidIndex(min)) { max = super.size(); }
+            else if (this.isValidIndex(max)) { min = 0; }
+            else { return false; }
+        }
+
         final int[] codes = new int[super.size()];
         final Object[] prev = super.toArray();
 
-        for (int i = min; i <= max; i++) { codes[i] = super.get(i).hashCode(); }
+        for (int i = min; i < max; i++) { codes[i] = super.get(i).hashCode(); }
 
         Arrays.sort(codes);
 
-        for (int i = min; i <= max; i++)
+        for (int i = min; i < max; i++)
         {
-            for (int j = min; j <= max; j++)
+            for (int j = min; j < max; j++)
             {
                 final C c = (C) prev[j];
 
@@ -148,23 +162,40 @@ public class ArrayListPlus<C> extends ArrayList<C>
     }
 
     /**
-     * Sorts the list using the {@code Arrays.sort()} method.
+     * Sorts the entire list using the {@code Arrays.sort()} method.
      *
      * @return {@code true} if the list has been sorted and changed.
      * @throws IllegalArgumentException {@inheritDoc}
      * @throws UnsupportedOperationException {@inheritDoc}
      * @throws NullPointerException {@inheritDoc}
      */
+    public boolean sort() { return this.sort(0, super.size()); }
+
+    /**
+     * Sorts the list from a minimum and maximum using the {@code Arrays.sort()} method.
+     *
+     * @param min Minimum index. (Inclusive)
+     * @param max Maximum index. (Exclusive)
+     * @return {@code true} if the list has been sorted and changed.
+     * @throws IllegalArgumentException {@inheritDoc}
+     * @throws UnsupportedOperationException {@inheritDoc}
+     * @throws NullPointerException {@inheritDoc}
+     */
     @SuppressWarnings(value = "unchecked")
-    public boolean sort() { return this.sort(0, super.size() - 1); }
-    
-    public boolean sort(final int min, final int max)
+    public boolean sort(int min, int max)
     {
+        if (!this.isValidRange(min, max))
+        {
+            if (this.isValidIndex(min)) { max = super.size(); }
+            else if (this.isValidIndex(max)) { min = 0; }
+            else { return false; }
+        }
+
         final Object[] list = super.toArray(), prev = list.clone();
 
         if (!(list[0] instanceof Comparable)) { return this.sortByHashCode(min, max); }
 
-        Arrays.sort(list, min, max + 1);
+        Arrays.sort(list, min, max);
         this.setList((C[]) list);
 
         return !Arrays.equals(prev, list);
@@ -184,7 +215,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
         Object[] prev = super.toArray();
 
         super.clear();
-        Collections.addAll(this, list);
+        java.util.Collections.addAll(this, list);
 
         return !Arrays.equals(prev, super.toArray());
     }
@@ -194,13 +225,13 @@ public class ArrayListPlus<C> extends ArrayList<C>
      *
      * @return {@code true} if the list has been reversed and changed.
      */
-    public boolean reverse() { return this.reverse(0, super.size() - 1); }
+    public boolean reverse() { return this.reverse(0, super.size()); }
 
     /**
      * Reverses the list from a starting and ending index.
      *
-     * @param start Starting index to reverse. (Inclusive)
-     * @param end Ending index to reverse. (Inclusive)
+     * @param min Starting index to reverse. (Inclusive)
+     * @param max Ending index to reverse. (Exclusive)
      * @return {@code true} if the list has been reversed and changed.
      * @throws ArrayIndexOutOfBoundsException {@inheritDoc} A check will be added in a later version.
      * @throws IndexOutOfBoundsException {@inheritDoc}
@@ -210,11 +241,18 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @throws IllegalArgumentException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
-    public boolean reverse(int start, final int end)
+    public boolean reverse(int min, int max)
     {
+        if (!this.isValidRange(min, max))
+        {
+            if (this.isValidIndex(min)) { max = super.size(); }
+            else if (this.isValidIndex(max)) { min = 0; }
+            else { return false; }
+        }
+
         final Object[] prev = super.toArray();
 
-        for (int index = end; start <= end; start++, index--) { super.set(start, (C) prev[index]); }
+        for (int index = max; min < max; min++, index--) { super.set(min, (C) prev[index]); }
 
         return !Arrays.equals(prev, super.toArray());
     }
@@ -260,6 +298,9 @@ public class ArrayListPlus<C> extends ArrayList<C>
             second = this.getSublist(a, length - 1);
         }
 
+        assert first != null;
+        assert second != null;
+        
         System.arraycopy(second, 0, full, 0, second.length);
         System.arraycopy(first, 0, full, second.length, first.length);
         this.setList((C[]) full);
@@ -270,19 +311,26 @@ public class ArrayListPlus<C> extends ArrayList<C>
     /**
      * Returns a sublist from the indexes provided.
      *
-     * @param start Starting index. (Inclusive)
-     * @param end Ending index. (Inclusive)
+     * @param min Starting index. (Inclusive)
+     * @param max Ending index. (Exclusive)
      * @return Sublist from the indexes.
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
     @SuppressWarnings(value = "unchecked")
-    public final C[] getSublist(int start, final int end)
+    public final C[] getSublist(int min, int max)
     {
-        final Object[] sub = new Object[end - start + 1];
+        if (!this.isValidRange(min, max))
+        {
+            if (this.isValidIndex(min)) { max = super.size(); }
+            else if (this.isValidIndex(max)) { min = 0; }
+            else { return null; }
+        }
+
+        final Object[] sub = new Object[max - min + 1];
 
         System.out.println(sub.length);
 
-        for (int index = 0; start <= end; start++, index++) { sub[index] = super.get(start); }
+        for (int index = 0; min < max; min++, index++) { sub[index] = super.get(min); }
 
         return (C[]) sub;
     }
@@ -294,9 +342,10 @@ public class ArrayListPlus<C> extends ArrayList<C>
      * @return List of the indexes of the item.
      * @throws UnsupportedOperationException {@inheritDoc}
      */
+    @SuppressWarnings(value = "unchecked")
     public int[] indexesOf(final C item)
     {
-        final ArrayListPlus<C> list = this;
+        final ArrayListPlus<C> list = (ArrayListPlus<C>) this.clone();
         int[] indexes = new int[0];
 
         while (list.contains(item))
@@ -330,4 +379,21 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
         return ii;
     }
+
+    /**
+     * Checks if the range being tested is within the bounds of the array.
+     *
+     * @param min Minimum index. (Inclusive)
+     * @param max Maximum index. (Exclusive)
+     * @return {@code true} if the indexes are valid.
+     */
+    public boolean isValidRange(final int min, final int max) { return min <= max && min > -1 && max <= super.size(); }
+
+    /**
+     * Checks if the index being tested is within the bounds of the array.
+     *
+     * @param index Index being tested.
+     * @return {@code true} if the index is valid.
+     */
+    public boolean isValidIndex(final int index) { return index > -1 && index < super.size(); }
 }
