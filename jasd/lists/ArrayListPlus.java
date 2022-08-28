@@ -1,6 +1,5 @@
 package jasd.lists;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,9 +10,9 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.28.15.59
+ * @version 2022.8.28.16.01
  */
-public class ArrayListPlus<C> extends ArrayList<C>
+public class ArrayListPlus<C> extends java.util.ArrayList<C>
 {
     private static final long serialVersionUID = 1114755249L;
 
@@ -300,7 +299,7 @@ public class ArrayListPlus<C> extends ArrayList<C>
 
         assert first != null;
         assert second != null;
-        
+
         System.arraycopy(second, 0, full, 0, second.length);
         System.arraycopy(first, 0, full, second.length, first.length);
         this.setList((C[]) full);
