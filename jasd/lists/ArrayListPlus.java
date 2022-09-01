@@ -1,6 +1,8 @@
 package jasd.lists;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.28.16.01
+ * @version 2022.8.31.19.05
  */
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
 {
@@ -26,7 +28,7 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
      *
      * @param c Starting list.
      */
-    public ArrayListPlus(final java.util.Collection<? extends C> c) { super(c); }
+    public ArrayListPlus(final Collection<? extends C> c) { super(c); }
 
     /**
      * Constructs a new {@code ArrayListPlus} object with an initial size.
@@ -395,4 +397,37 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
      * @return {@code true} if the index is valid.
      */
     public boolean isValidIndex(final int index) { return index > -1 && index < super.size(); }
+
+    /**
+     * Adds multiple items to the end of the list.
+     *
+     * @param items List of items to be added.
+     * @return {@code true}
+     * @throws IllegalArgumentException {@inheritDoc}
+     * @see Collections#addAll(Collection, C...) addAll
+     */
+    @SuppressWarnings(value = "unchecked")
+    public boolean add(C... items)
+    {
+        Collections.addAll(this, items);
+
+        return true;
+    }
+
+    /**
+     * Checks if the entire list is sorted.
+     *
+     * @return {@code true} if the list is sorted.
+     */
+    public boolean isSorted() { return this.isSorted(0, super.size()); }
+
+    /**
+     * Checks if the list is sorted from a given range.
+     * 
+     * @param min Minimum index. (Inclusive)
+     * @param max Maximum index. (Exclusive)
+     * @return {@code true} if the range us sorted.
+     */
+    @SuppressWarnings(value = "unchecked")
+    public boolean isSorted(int min, int max) { return !((ArrayListPlus<C>) super.clone()).sort(min, max); }
 }
