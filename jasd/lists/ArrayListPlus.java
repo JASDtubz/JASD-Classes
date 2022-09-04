@@ -12,7 +12,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.8.31.19.05
+ * @version 2022.9.3.22.08
  */
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
 {
@@ -103,7 +103,7 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
      * @return {@code true} if the items have been swapped and different.
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
-    public boolean swap(C first, C second)
+    public boolean swap(final C first, final C second)
     {
         if (super.contains(first) && super.contains(second))
         {
@@ -423,11 +423,14 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
 
     /**
      * Checks if the list is sorted from a given range.
-     * 
+     *
      * @param min Minimum index. (Inclusive)
      * @param max Maximum index. (Exclusive)
      * @return {@code true} if the range us sorted.
      */
     @SuppressWarnings(value = "unchecked")
     public boolean isSorted(int min, int max) { return !((ArrayListPlus<C>) super.clone()).sort(min, max); }
+
+    @SuppressWarnings(value = "unchecked")
+    public ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
 }
