@@ -1,7 +1,7 @@
 package jasd.annotations;
 
 /**
- * This annotation is used for classes that have a method that makes a direct clone of their object, returning their
+ * This annotation is used for classes that have a method {@code copy()} that makes a direct clone of their object, returning their
  * type rather than {@code Object}.
  *
  * @author Jean-Denis Toting de Beauvoir
