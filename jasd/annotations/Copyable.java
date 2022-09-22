@@ -5,7 +5,7 @@ package jasd.annotations;
  * returning their type rather than {@code Object}.
  *
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.9.14.23.20
+ * @version 2022.09.22.14.02
  */
 public @interface Copyable
 {
