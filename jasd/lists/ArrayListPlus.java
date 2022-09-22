@@ -1,5 +1,7 @@
 package jasd.lists;
 
+import jasd.annotations.Copyable;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -12,8 +14,9 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.9.3.22.08
+ * @version 2022.09.22.14.03
  */
+@Copyable(hasCopyMethod = true)
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
 {
     private static final long serialVersionUID = 1114755249L;
@@ -429,8 +432,9 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
      * @return {@code true} if the range us sorted.
      */
     @SuppressWarnings(value = "unchecked")
-    public boolean isSorted(int min, int max) { return !((ArrayListPlus<C>) super.clone()).sort(min, max); }
+    public boolean isSorted(int min, int max) { return !(this.copy()).sort(min, max); }
 
+    @Copyable(copyMethod = true)
     @SuppressWarnings(value = "unchecked")
     public ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
 }
