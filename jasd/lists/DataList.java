@@ -56,18 +56,8 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         
         list.sort();
         
-        if (size % 2 == 0 && size % 4 != 0 || size % 2 != 0 && )
-        
-        if (list.size() % 2 == 0)
-        {
-            if (list.size() % 4 == 0) { return (list.get(list.size() / 4 - 1).doubleValue() + list.get(list.size() / 4).doubleValue()) / 2; }
-            else { return list.get(list.size() / 4).doubleValue(); }
-        }
-        else
-        {
-            if (list.size() / 2 % 2 == 0) { return (list.get(list.size() / 4 - 1).doubleValue() + list.get(list.size() / 4).doubleValue()) / 2; }
-            else { return list.get(list.size() / 4).doubleValue(); }
-        }
+        if (size % 2 == 0 && size % 4 != 0 || size % 2 != 0 && size / 2 % 2 != 0) { return list.get(size / 4).doubleValue(); }
+        else { return (list.get(size / 4 - 1).doubleValue() + list.get(size / 4).doubleValue()) / 2; }
     }
 
     public double range()
