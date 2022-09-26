@@ -48,6 +48,27 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     public double populationStandardDeviation() { return Math.sqrt(this.populationVariance()); }
 
     public double sampleStandardDeviation() { return Math.sqrt(this.sampleVariance()); }
+    
+    public double firstQuartile()
+    {
+        final DataList<C> list = this.copy();
+        final int size = super.size();
+        
+        list.sort();
+        
+        if (size % 2 == 0 && size % 4 != 0 || size % 2 != 0 && )
+        
+        if (list.size() % 2 == 0)
+        {
+            if (list.size() % 4 == 0) { return (list.get(list.size() / 4 - 1).doubleValue() + list.get(list.size() / 4).doubleValue()) / 2; }
+            else { return list.get(list.size() / 4).doubleValue(); }
+        }
+        else
+        {
+            if (list.size() / 2 % 2 == 0) { return (list.get(list.size() / 4 - 1).doubleValue() + list.get(list.size() / 4).doubleValue()) / 2; }
+            else { return list.get(list.size() / 4).doubleValue(); }
+        }
+    }
 
     public double range()
     {
@@ -68,6 +89,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     }
 
     @Copyable(copyMethod = true)
+    @Override
     @SuppressWarnings(value = "unchecked")
     public DataList<C> copy() { return (DataList<C>) this.clone(); }
 }
