@@ -30,6 +30,24 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         if (list.size() % 2 == 0) { return (list.get(two - 1).doubleValue() + list.get(two).doubleValue()) / 2; }
         else { return list.get(two).doubleValue(); }
     }
+    
+    public double minimum()
+    {
+        final DataList<C> list = this.copy();
+        
+        list.sort();
+        
+        return list.get(0);
+    }
+    
+    public double maximum()
+    {
+        final DataList<C> list = this.copy();
+        
+        list.sort();
+        
+        return list.get(super.size() - 1);
+    }
 
     private double halfVariance()
     {
@@ -52,12 +70,31 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     public double firstQuartile()
     {
         final DataList<C> list = this.copy();
-        final int size = super.size();
+        final int size = super.size(), four = size / 4;
         
         list.sort();
         
-        if (size % 2 == 0 && size % 4 != 0 || size % 2 != 0 && size / 2 % 2 != 0) { return list.get(size / 4).doubleValue(); }
-        else { return (list.get(size / 4 - 1).doubleValue() + list.get(size / 4).doubleValue()) / 2; }
+        if (size % 2 == 0 && size % 4 != 0 || size % 2 != 0 && size / 2 % 2 != 0) { return list.get(four).doubleValue(); }
+        else { return (list.get(four - 1).doubleValue() + list.get(four).doubleValue()) / 2; }
+    }
+    
+    public double thirdQuartile()
+    {
+        final DataList<C> list = this.copy();
+        final int size = super.size(), two = size / 2, four = size / 4;
+        
+        list.sort();
+        
+        if (size % 2 == 0)
+        {
+            if (size % 4 == 0) { return (list.get(two + four - 1).doubleValue() + list.get(two + four).doubleValue()) / 2; }
+            else { return list.get(two + four).doubleValue(); }
+        }
+        else
+        {
+            if (size / 2 % 2 == 0) { return (list.get(two + four).doubleValue() + list.get(two + four + 1).doubleValue())/ 2; }
+            else { return list.get(two + four + 1).doubleValue(); }
+        }
     }
 
     public double range()
@@ -77,9 +114,33 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
 
         return sum;
     }
+    
+    public double mode()
+    {
+        int total = 0, index = 0;
+    
+        for (C c : this)
+        {
+            final int amount = super.indexesOf(c).length;
+        
+            if (amount > total)
+            {
+                total = amount;
+                index = super.indexOf(c);
+            }
+        }
+        
+        return super.get(index).doubleValue();
+    }
+    
+    public double percentile(Number num)
+    {
+        final DataList<C> list = this.copy();
+        
+        return 
+    }
 
     @Copyable(copyMethod = true)
-    @Override
     @SuppressWarnings(value = "unchecked")
-    public DataList<C> copy() { return (DataList<C>) this.clone(); }
+    public final DataList<C> copy() { return (DataList<C>) this.clone(); }
 }
