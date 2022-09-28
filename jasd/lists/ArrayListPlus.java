@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.09.22.14.06
+ * @version 2022.09.28.14.43
  */
 @Copyable(hasCopyMethod = true)
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
@@ -436,5 +436,5 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
 
     @Copyable(copyMethod = true)
     @SuppressWarnings(value = "unchecked")
-    public ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
+    public final ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
 }
