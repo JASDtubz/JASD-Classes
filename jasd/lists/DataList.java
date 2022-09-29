@@ -136,8 +136,22 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     public double percentile(Number num)
     {
         final DataList<C> list = this.copy();
+        final double n = num.doubleValue();
         
-        return 
+        list.sort();
+        
+        if (list.get(0).doubleValue() > n) { return 0.0D; }
+        else if (list.get(list.size() - 1).doubleValue() < n) { return 100.0D; }
+        else
+        {
+            double counter = 0;
+        
+            for (C c : list)
+            {
+                if (c.doubleValue() >= n) { return counter / list.size(); }
+                else { counter++; }
+            }
+        }
     }
 
     @Copyable(copyMethod = true)
