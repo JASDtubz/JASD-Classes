@@ -8,6 +8,8 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     private static final long serialVersionUID = 1853461384L;
 
     public DataList() { super(); }
+    
+    public DataList(final Collection<? extends Number> c) { super(c); }
 
     public double arithmeticMean() { return this.sum() / super.size(); }
 
