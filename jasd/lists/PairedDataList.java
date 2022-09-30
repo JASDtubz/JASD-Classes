@@ -47,5 +47,17 @@ public class PairedDataList<X extends Number, Y extends Number>
         return this;
     }
     
+    public double correlation()
+    {
+        return (this.sums(this.listX) * this.sums(this.listY)) / Math.sqrt(Math.pow(this.sums(this.listX), 2.0D) * Math.pow(this.sums(this.listY), 2.0D));
+    }
     
+    private double sums(final DataList<? extends Number> list)
+    {
+        double sum = 0.0D;
+        
+        for (C c : list) { sum += c.doubleValue() - list.arithmeticMean(); }
+        
+        return sum;
+    }
 }
