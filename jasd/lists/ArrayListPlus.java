@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.09.28.14.43
+ * @version 2022.09.29.22.40
  */
 @Copyable(hasCopyMethod = true)
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
@@ -431,10 +431,9 @@ public class ArrayListPlus<C> extends java.util.ArrayList<C>
      * @param max Maximum index. (Exclusive)
      * @return {@code true} if the range us sorted.
      */
-    @SuppressWarnings(value = "unchecked")
     public boolean isSorted(int min, int max) { return !(this.copy()).sort(min, max); }
 
     @Copyable(copyMethod = true)
     @SuppressWarnings(value = "unchecked")
-    public final ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
+    public ArrayListPlus<C> copy() { return (ArrayListPlus<C>) super.clone(); }
 }
