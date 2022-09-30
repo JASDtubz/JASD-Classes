@@ -122,7 +122,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         return super.get(index).doubleValue();
     }
 
-    public double percentileOf(Number num)
+    public double percentileOf(C num)
     {
         final DataList<C> list = this.getSortedList();
         final double n = num.doubleValue();
@@ -143,7 +143,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         }
     }
 
-    public double standardScoreOf(Number num)
+    public double standardScoreOf(C num)
     {
         return (num.doubleValue() - this.arithmeticMean()) / this.populationStandardDeviation();
     }
