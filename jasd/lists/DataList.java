@@ -9,7 +9,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
 
     public DataList() { super(); }
     
-    public DataList(final Collection<? extends Number> c) { super(c); }
+    public DataList(final java.util.Collection<? extends C> c) { super(c); }
 
     public double arithmeticMean() { return this.sum() / super.size(); }
 
