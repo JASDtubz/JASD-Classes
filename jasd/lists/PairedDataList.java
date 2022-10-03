@@ -49,14 +49,17 @@ public class PairedDataList<X extends Number, Y extends Number>
     
     public double correlation()
     {
-        return (this.sums(this.listX) * this.sums(this.listY)) / Math.sqrt(Math.pow(this.sums(this.listX), 2.0D) * Math.pow(this.sums(this.listY), 2.0D));
+        final double sumX = this.sums(this.listX), sumY = this.sums(this.listY);
+    
+        return (sumX * sumY) / Math.sqrt(Math.pow(sumX, 2.0D) * Math.pow(sumY, 2.0D));
     }
     
     private double sums(final DataList<? extends Number> list)
     {
+        final double mean = list.arithmeticMean();
         double sum = 0.0D;
         
-        for (C c : list) { sum += c.doubleValue() - list.arithmeticMean(); }
+        for (C c : list) { sum += c.doubleValue() - mean; }
         
         return sum;
     }
