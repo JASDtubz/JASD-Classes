@@ -4,6 +4,8 @@ import jasd.number.Logarithm;
 
 public class Trigonometry
 {	
+    private Trigonometry() { }
+    
     public static double sin(double x) { return Math.sin(x); }
 
     public static double cos(double x) { return Math.cos(x); }
@@ -73,4 +75,8 @@ public class Trigonometry
     public static double arcsec(double x) { return Trigonometry.arccos(1 / x); }
     
     public static double arccsc(double x) { return Trigonometry.arcsin(1 / x); }
+    
+    public static double sinc(double x) { return Trigonometry.sin(x) / x; }
+    
+    public static double sinhc(double x) { return Trigonometry.sinh(x) / x; }
 }
