@@ -20,21 +20,21 @@ public class Trigonometry
 
     public static double crd(double x) { return 2 * Trigonometry.sin(x / 2); }
 
-    public static double versin(double x) { return 1 - Trigonometry.cos(x); }
+    public static double ver(double x) { return 1 - Trigonometry.cos(x); }
 
-    public static double coversin(double x) { return 1 - Trigonometry.sin(x); }
+    public static double cvs(double x) { return 1 - Trigonometry.sin(x); }
 
-    public static double haversin(double x) { return 0.5 * Trigonometry.versin(x); }
+    public static double hav(double x) { return 0.5 * Trigonometry.ver(x); }
     
-    public static double hacoversin(double x) { return Trigonometry.coversin(x) / 2; }
+    public static double hcv(double x) { return Trigonometry.cvs(x) / 2; }
     
-    public static double vercosin(double x) { return 1 + Trigonometry.cos(x); }
+    public static double vcs(double x) { return 1 + Trigonometry.cos(x); }
     
-    public static double covercosin(double x) { return 1 + trigonometry.sin(x); }
+    public static double cvc(double x) { return 1 + trigonometry.sin(x); }
     
-    public static double havercosin(double x) { return Trigonometry.vercosin(x) / 2; }
+    public static double hvc(double x) { return Trigonometry.vcs(x) / 2; }
     
-    public static double hacovercosin(double x) { return Trigonometry.covercosin(x) / 2; }
+    public static double hcc(double x) { return Trigonometry.cvc(x) / 2; }
 
     public static double exsec(double x) { return Trigonometry.sec(x) - 1; }
 
