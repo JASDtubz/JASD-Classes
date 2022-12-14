@@ -24,7 +24,7 @@ public class Trigonometry
 
     public static double cvs(double x) { return 1 - Trigonometry.sin(x); }
 
-    public static double hav(double x) { return 0.5 * Trigonometry.ver(x); }
+    public static double hvs(double x) { return 0.5 * Trigonometry.ver(x); }
     
     public static double hcv(double x) { return Trigonometry.cvs(x) / 2; }
     
@@ -35,10 +35,24 @@ public class Trigonometry
     public static double hvc(double x) { return Trigonometry.vcs(x) / 2; }
     
     public static double hcc(double x) { return Trigonometry.cvc(x) / 2; }
+    
+    public static double aver(double x) { return Trigonometry.arccos(1 - x); }
+    
+    public static double avcs(double x) { return Trigonometry.arccos(x - 1); }
+    
+    public static double acvs(double x) { return Trigonometry.arcsin(1 - x); }
+    
+    public static double acvc(double x) { return Trigonometry.arcsin(x - 1); }
+    
+    public static double ahvs(double x) { return Trigonometry.arccos(1 - 2 * x); }
 
-    public static double exsec(double x) { return Trigonometry.sec(x) - 1; }
+    public static double exs(double x) { return Trigonometry.sec(x) - 1; }
 
-    public static double excsc(double x) { return Trigonometry.exsec(Math.PI / 2 - x); }
+    public static double exc(double x) { return Trigonometry.exsec(Math.PI / 2 - x); }
+    
+    public static double aexs(double x) { return Trigonometry.arcsec(x + 1); }
+    
+    public static double aexc(double x) { return Trigonometry.arccsc(x + 1); }
 
     public static double sinh(double x) { return Math.sinh(x); }
 
@@ -79,4 +93,6 @@ public class Trigonometry
     public static double sinc(double x) { return Trigonometry.sin(x) / x; }
     
     public static double sinhc(double x) { return Trigonometry.sinh(x) / x; }
+    
+    public static double arc(double x) { return x; }
 }
