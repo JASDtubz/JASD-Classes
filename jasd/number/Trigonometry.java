@@ -49,6 +49,8 @@ public class Trigonometry
     public static double ahvc(double x) { return Trigonometry.arccos(2 * x - 1); }
     
     public static double ahcv(double x) { return Trigonometry.arcsin(1 - 2 * y); }
+    
+    public static double ahcc(double x) { return Trigonometry.arcsin(2 * y - 1); }
 
     public static double exs(double x) { return Trigonometry.sec(x) - 1; }
 
