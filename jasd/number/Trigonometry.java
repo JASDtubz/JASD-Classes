@@ -45,6 +45,10 @@ public class Trigonometry
     public static double acvc(double x) { return Trigonometry.arcsin(x - 1); }
     
     public static double ahvs(double x) { return Trigonometry.arccos(1 - 2 * x); }
+    
+    public static double ahvc(double x) { return Trigonometry.arccos(2 * x - 1); }
+    
+    public static double ahcv(double x) { return Trigonometry.arcsin(1 - 2 * y); }
 
     public static double exs(double x) { return Trigonometry.sec(x) - 1; }
 
@@ -94,5 +98,5 @@ public class Trigonometry
     
     public static double sinhc(double x) { return Trigonometry.sinh(x) / x; }
     
-    public static double arc(double x) { return x; }
+    //public static double arc(double x) { return x; }
 }
