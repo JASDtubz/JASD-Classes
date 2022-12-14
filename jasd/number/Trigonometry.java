@@ -76,7 +76,7 @@ public class Trigonometry
 
     public static double arcosh(double x) { return Logarithm.ln(x + Math.sqrt(x * x - 1)); }
 
-    public static double artanh(double x) { return 0.5 * Logarithm.ln((x + 1) / (x - 1)); }
+    public static double artanh(double x) { return 0.5 * Logarithm.ln((1 + x) / (1 - x)); }
 
     public static double arcoth(double x) { return 0.5 * Logarithm.ln((x + 1) / (x - 1)); }
 
@@ -96,9 +96,13 @@ public class Trigonometry
     
     public static double arccsc(double x) { return Trigonometry.arcsin(1 / x); }
     
-    public static double sinc(double x) { return Trigonometry.sin(x) / x; }
+    public static double sinc(double x) { return x != 0 ? Trigonometry.sin(x) / x : 1.0D; }
     
     public static double sinhc(double x) { return Trigonometry.sinh(x) / x; }
     
-    //public static double arc(double x) { return x; }
+    public static double arc(double x)
+    {
+        if (x % Math.PI <= Math.PI / 2) { return x % (Math.PI / 2); }
+        
+    }
 }
