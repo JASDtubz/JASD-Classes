@@ -100,9 +100,5 @@ public class Trigonometry
     
     public static double sinhc(double x) { return Trigonometry.sinh(x) / x; }
     
-//     public static double arc(double x)
-//     {
-//         if (x % Math.PI <= Math.PI / 2) { return x % (Math.PI / 2); }
-        
-//     }
+    public static double arc(double x) { return x % Math.PI <= Math.PI / 2 ? x % (Math.PI / 2) : -x % (Math.PI / 2); }
 }
