@@ -2,6 +2,7 @@ package jasd.lists;
 
 import jasd.annotations.Copyable;
 
+import java.io.Serial;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -19,6 +20,7 @@ import java.util.Random;
 @Copyable(hasCopyMethod = true)
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
 {
+    @Serial
     private static final long serialVersionUID = 1114755249L;
 
     /**
