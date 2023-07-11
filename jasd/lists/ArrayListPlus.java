@@ -15,7 +15,7 @@ import java.util.Random;
  *
  * @param <C> Object list type.
  * @author Jean-Denis Toting de Beauvoir
- * @version 2022.09.29.22.40
+ * @version 2023.07.11.13.22
  */
 @Copyable(hasCopyMethod = true)
 public class ArrayListPlus<C> extends java.util.ArrayList<C>
