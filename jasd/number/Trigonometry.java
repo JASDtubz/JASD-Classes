@@ -359,7 +359,7 @@ public class Trigonometry
      * @param x
      * @return
      */
-    public static double arc(double x) { return x % Math.PI <= Math.PI / 2 ? x % (Math.PI / 2) : -x % (Math.PI / 2); } // try arcsin(sin(x)
+    public static double arc(double x) { return Math.abs(Trigonometry.arcsin(Trigonometry.sin(x))); }
 
 
     /**
