@@ -51,6 +51,22 @@ public class PairedDataList<X extends Number, Y extends Number>
     {
         return (this.sums(this.listX) * this.sums(this.listY)) / Math.sqrt(this.sums2(this.listX) * this.sums2(this.listY));
     }
+
+    private double halfCovariance()
+    {
+        final double meanX = this.listX.arithmeticMean(), meanY = this.listY.arithmeticMean();
+        double sum = 0.0D;
+
+        //if (this.listX.size() != this.listY.size()) { throw new MismatchedLengthException(); }
+        
+        for (int i = 0; i < this.listX.size(); i++) { sum = (this.listX.get(i).doubleValue() - meanX) * (this.listY.get(i).doubleValue() - meanY); }
+
+        return sum;
+    }
+
+    public double sampleCovariance() { return this.halfCovariance() / (this.listX.size() - 1); }
+
+    public double populationCovariance() { return this.halfCovariance() / this.listX.size(); }
     
     private double sums(final DataList<? extends Number> list)
     {
