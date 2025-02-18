@@ -40,7 +40,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         final double mean = this.arithmeticMean();
         double sum = 0;
 
-        for (C c : this) { sum += Math.pow(c.doubleValue() - mean, 2.0D); }
+        for (final C c : this) { sum += Math.pow(c.doubleValue() - mean, 2.0D); }
 
         return sum;
     }
@@ -101,7 +101,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     {
         double sum = 0.0D;
 
-        for (C c : this) { sum += c.doubleValue(); }
+        for (final C c : this) { sum += c.doubleValue(); }
 
         return sum;
     }
@@ -110,7 +110,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     {
         int total = 0, index = 0;
 
-        for (C c : this)
+        for (final C c : this)
         {
             final int amount = super.indexesOf(c).length;
 
@@ -148,6 +148,16 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
     public double standardScoreOf(final C num)
     {
         return (num.doubleValue() - this.arithmeticMean()) / this.populationStandardDeviation();
+    }
+
+    public double skewness()
+    {
+        final double mean = this.arithmeticMean();
+        double sum = 0.0D;
+
+        for (final C c : this) { sum += Math.pow(c - mean. 3.0D); }
+
+        return sum / ((super.size() - 1) * Math.pow(this.sampleStandardDeviation(), 3.0D));
     }
 
     private DataList<C> getSortedList()
