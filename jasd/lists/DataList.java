@@ -155,7 +155,7 @@ public class DataList<C extends Number> extends ArrayListPlus<C>
         final double mean = this.arithmeticMean();
         double sum = 0.0D;
 
-        for (final C c : this) { sum += Math.pow(c - mean. 3.0D); }
+        for (final C c : this) { sum += Math.pow(c.doubleValue() - mean, 3.0D); }
 
         return sum / ((super.size() - 1) * Math.pow(this.sampleStandardDeviation(), 3.0D));
     }
